@@ -1,0 +1,26 @@
+<roster>
+  <student>
+    <firstName>Stu</firstName>
+    <lastName>Dent</lastName>
+  </student>
+
+  <student>
+    <firstName>Teachers</firstName>
+    <lastName>Pet</lastName>
+  </student>
+
+  <student>
+    <firstName>Goody</firstName>
+    <lastName>Two-Shoes</lastName>
+  </student>
+
+  <student>
+    <firstName>Miss</firstName>
+    <lastName>Perfect</lastName>
+  </student>
+
+  <student>
+    <firstName>Perfect</firstName>
+    <lastName>Child</lastName>
+  </student>
+</roster>
