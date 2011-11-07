@@ -1,4 +1,3 @@
-#require File.join(File.dirname(__FILE__), '../src/roster.rb')
 require 'spec_helper'
 require 'teaching_assistant'
 

@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'teaching_assistant/color_string'
+
+puts "Using TeachingAssistant!".colorize!(:green)
+
