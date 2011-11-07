@@ -33,7 +33,9 @@ class Submission
     return grade_with_script(options[:with]) if options[:with]
 
     correct_output = File.read("solutions/#{@lab}/#{@lab}.out")
-    stdin, stdout, stderr = Open3.popen3(@lab, chdir: @filename)
+    lab = @lab
+    lab += ".#{options[:extension]}" if options[:extension]
+    stdin, stdout, stderr = Open3.popen3(lab, chdir: @filename)
     out, output = '', ''
     output << out while out = stdout.gets
     stdin.close; stdout.close; stderr.close;

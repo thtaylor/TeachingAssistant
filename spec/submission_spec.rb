@@ -27,8 +27,8 @@ describe Submission do
       it "should return the grade the student received on the project" do
         submission = Submission.new('student01', 'lab1')
         submission.compile!
-        submission.evaluate!.should eq("100%")
-        submission.evaluate!
+        submission.evaluate!(:extension => 'exe').should eq("100%")
+        submission.evaluate!(:extension => 'exe')
       end
     end
 

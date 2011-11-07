@@ -9,11 +9,7 @@ class TeachingAssistant
       student = File.basename(path)
       sub = Submission.new(student, lab.to_s)
       sub.compile! unless options[:no_compile]
-      if options[:with]
-        sub.evaluate!(:with => options[:with])
-      else
-        sub.evaluate!
-      end
+      sub.evaluate! options
       result_set << sub
     end
     result_set

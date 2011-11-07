@@ -12,20 +12,20 @@ describe Roster do
     end
 
     context "When there is a default roster file," do
-      before { File.new("roster.xml", 'w').close }
-      after  { File.delete("roster.xml") }
+      before { File.new("roster.yaml", 'w').close }
+      after  { File.delete("roster.yaml") }
       it "should return the path to the directory's roster file." do
         roster = Roster.find
-        roster.should eq "roster.xml"
+        roster.should eq "roster.yaml"
       end
     end
 
     context "When there is a roster file, but not in the default location" do
-      before { File.new("./submissions/roster.xml", 'w').close }
-      after  { File.delete("./submissions/roster.xml") }
+      before { File.new("./submissions/roster.yaml", 'w').close }
+      after  { File.delete("./submissions/roster.yaml") }
       it "should return the path to the directory's roster file." do
         roster = Roster.find
-        roster.should eq "./submissions/roster.xml"
+        roster.should eq "./submissions/roster.yaml"
       end
     end
   end
@@ -42,8 +42,8 @@ describe Roster do
     end
 
     context "When there is a valid roster file given" do
-      before { File.rename("roster.hidden.xml", "roster.xml") }
-      after  { File.rename("roster.xml", "roster.hidden.xml") }
+      before { File.rename("roster.hidden.yaml", "roster.yaml") }
+      after  { File.rename("roster.yaml", "roster.hidden.yaml") }
       it "should return a valid Roster object" do
         roster = Roster.new(Roster.find)
         roster.students.size.should eq(5)

@@ -14,18 +14,17 @@ end
 
 task :default => :spec
 
-namespace :file do
-  namespace :structure do
-    task :create do
-      Dir.mkdir("submissions", 755)
-      if @roster.exists?
-        Dir.chdir("submissions") do
-          
+namespace :labs do
+  task :new, :name do |t, args|
+    puts "Adding Lab name #{args[:name]}"
+    Dir['submissions/*'].each do |path|
+      Dir.chdir(path) do |student|
+        begin
+          Dir.mkdir(args[:name])
+        rescue SystemCallError
+          puts "#{student}/#{args[:name]} was already created"
         end
       end
-    end
-
-    task :destroy do
     end
   end
 end

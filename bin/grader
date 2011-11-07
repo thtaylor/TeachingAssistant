@@ -4,3 +4,12 @@ require 'teaching_assistant/color_string'
 
 puts "Using TeachingAssistant!".colorize!(:green)
 
+class TeachingAssistantGenerator < Rails::Generators::Base
+  def create_structure!
+
+  end
+end
+
+if $1 == 'g' || $1 == 'generate'
+  TeachingAssistantGenerator.create_structure!
+end
