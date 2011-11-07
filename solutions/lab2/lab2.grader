@@ -1,3 +1,4 @@
 #!/bin/bash
 
-exit 0;
+OUT=$1
+exit $?;
