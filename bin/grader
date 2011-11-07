@@ -1,15 +1,40 @@
 #!/usr/bin/env ruby
 
-require 'teaching_assistant/color_string'
+require 'thor'
+require 'thor/group'
 
-puts "Using TeachingAssistant!".colorize!(:green)
+class TeachingAssistantStructureGenerator < Thor::Group
+  include Thor::Actions
 
-class TeachingAssistantGenerator < Rails::Generators::Base
-  def create_structure!
+  class_option :dirname, :default => 'teaching_assistant'
 
+  def self.source_root
+    File.realdirpath('.')
   end
+
+  def create_file_structure
+    empty_directory(options[:dirname])
+    empty_directory(File.join(options[:dirname], "submissions"))
+    empty_directory(File.join(options[:dirname], "solutions"))
+  end
+
+  def create_roster
+    template "roster.hidden.yaml", "#{options[:dirname]}/roster.yaml"
+  end
+
 end
 
-if $1 == 'g' || $1 == 'generate'
-  TeachingAssistantGenerator.create_structure!
+
+if ARGV[0] == 'g' || ARGV[0] == 'generate'
+  ARGV.shift
+  puts "Structure Generator"
+  TeachingAssistantStructureGenerator.start 
+end
+
+if ARGV[0] == 'c' || ARGV[0] == 'check'
+  puts "Check for accurate structure"
+end
+
+if ARGV[0] == 'e' || ARGV[0] == 'evaluate'
+  puts "Grade assignment #{ARGV[1]}"
 end

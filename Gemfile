@@ -1,5 +1,6 @@
 source "http://rubygems.org"
 
-gem 'rspec', require: 'spec'
-gem 'nokogiri'
-gem 'yaml'
+group :test do
+  gem 'rspec', require: 'spec'
+  gem 'turn'
+end

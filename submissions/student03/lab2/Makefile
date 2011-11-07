@@ -1,8 +1,8 @@
 CC=g++
 CFLAGS=-c -Wall
-SOURCES=<%= student %>_<% lab %>.cpp
+SOURCES=student03_lab2.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=<% lab %>.cpp
+EXECUTABLE=lab2.exe
 
 all: $(SOURCES) $(EXECUTABLE) clean
 

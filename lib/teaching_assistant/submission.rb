@@ -27,10 +27,15 @@ class Submission
     true
   end
 
+  def self.cleanup!(student, lab, options = {})
+    filename = "submissions/#{student}/#{lab}/"
+    Dir[filename+'*'].each {|f| File.delete(f) if File.executable?(f) }
+  end
+
   def evaluate!(options = {})
     return "0%" if @score
 
-    return grade_with_script(options[:with]) if options[:with]
+    return grade_with_script(options) if options[:with]
 
     correct_output = File.read("solutions/#{@lab}/#{@lab}.out")
     lab = @lab
@@ -43,8 +48,11 @@ class Submission
     @score = "0%"
   end
 
-  def grade_with_script(script)
-    output = `#{script} #{@filename}`
+  def grade_with_script(options = {})
+    lab = @lab
+    lab += ".#{options[:extension]}" if options[:extension]
+
+    output = `#{options[:script]} #{File.join(@filename, lab)}`
     return @score = "100%" if $?.to_i == 0
     @score = "0%"
   end

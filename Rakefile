@@ -1,3 +1,6 @@
+#require 'bundler/gem_tasks'
+require 'rspec/core/rake_task'
+
 PROJECT_ROOT="/home/thtaylor/ruby_archives/grader/"
 
 desc "Run all specs in the specs/ directory ("
@@ -7,12 +10,16 @@ task :rspec do
   end
 end
 
-require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec) do |spec|
-  spec.rspec_opts = "--format=nested"
+  #spec.rspec_opts = "--format=nested"
 end
 
 task :default => :spec
+
+desc "Run test suite"
+task :test do
+  Dir['test/**/*_test.rb'].each {|file| require_relative file}
+end
 
 namespace :labs do
   task :new, :name do |t, args|
