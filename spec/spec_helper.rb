@@ -1,6 +1,7 @@
 require 'rspec'
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
+  #config.libs = [File.join(File.dirname(__FILE__), "../lib/")]
   # == Mock Framework
   #
   # RSpec uses its own mocking framework by default. If you prefer to

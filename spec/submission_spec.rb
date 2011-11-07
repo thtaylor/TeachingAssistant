@@ -1,4 +1,7 @@
-require File.join(File.dirname(__FILE__), '../src/submission.rb')
+#require File.join(File.dirname(__FILE__), '../src/submission.rb')
+
+require 'spec_helper'
+require 'teaching_assistant'
 
 describe Submission do
   describe "#compile!" do

@@ -1,4 +1,6 @@
-require File.join(File.dirname(__FILE__), '../src/roster.rb')
+#require File.join(File.dirname(__FILE__), '../src/roster.rb')
+require 'spec_helper'
+require 'teaching_assistant'
 
 describe Roster do
 
@@ -15,7 +17,7 @@ describe Roster do
       after  { File.delete("roster.xml") }
       it "should return the path to the directory's roster file." do
         roster = Roster.find
-        roster.should eq "roster.txt"
+        roster.should eq "roster.xml"
       end
     end
 
@@ -24,7 +26,7 @@ describe Roster do
       after  { File.delete("./submissions/roster.xml") }
       it "should return the path to the directory's roster file." do
         roster = Roster.find
-        roster.should eq "./submissions/roster.txt"
+        roster.should eq "./submissions/roster.xml"
       end
     end
   end
@@ -46,6 +48,7 @@ describe Roster do
       it "should return a valid Roster object" do
         roster = Roster.new(Roster.find)
         roster.students.size.should eq(5)
+        roster.students.each {|s| s.username.should_not be_nil }
       end
     end
   end
