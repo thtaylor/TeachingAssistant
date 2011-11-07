@@ -1,4 +1,8 @@
 #!/bin/bash
 
+<<<<<<< HEAD
 $1
+=======
+OUT=$1
+>>>>>>> 445a04a4a5d5dd91d9f8a87a25f9c0d4fae213c1
 exit $?;
